@@ -5,6 +5,7 @@ A small plugin for Xcode 4.\* that allows for posting of Gist's directly from Xc
 It is purposely meant to be very small and not to intrusive.
 It is not the most pretty little thing, but it gets the job done.
 Think of it a you friendly Gist hammer:-D.  
+
 It has been tested in Xcode 4.6.2 on OS X 10.8*.
 
 # Getting started
@@ -33,6 +34,8 @@ The plugin uses a modified version of [UAGithubEngine](https://github.com/owainh
 
 # Future Improvements
 * Better visual layout. Especially modal view with user/password request needs some work.
+* Catching return key to commit gist instead of using the mouse to push buttons.
+* Better validation of username and password fields.
 
 # Contributions
 If you would like to contribute to the plugin, simply fork the project and submit a pull request. See [GitHub help](https://help.github.com/articles/fork-a-repo)
