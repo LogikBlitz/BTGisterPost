@@ -15,6 +15,9 @@ To install the plugin do the following.
 to `~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins`
 * Alternatively build the solution and the plugin will automatically be installed. Remember to restart XCode for the plugin to be activated.
 
+## Alcatraz
+I will be submitting the plugin for [Alcatraz](http://mneorr.github.com/Alcatraz) in a short while. This will make it simpler to get and install the plugin.
+
 ## How to use the plugin
 In Xcode the plugin will add a new menupoint in the `edit` menu: `Post Gist To Github`.
 Alternatively you can also use the shortcut `⌥ + c` i.e. `(option + c)`
