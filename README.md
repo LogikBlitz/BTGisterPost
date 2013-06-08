@@ -4,7 +4,7 @@ BTGisterPost
 A small plugin for Xcode 4.\* that allows for posting of Gist's directly from Xcode.
 It is purposely meant to be very small and not to intrusive.
 It is not the most pretty little thing, but it gets the job done.
-Think of it a you friendly Gist hammer:-D
+Think of it a you friendly Gist hammer:-D.  
 It has been tested in Xcode 4.6.2 on OS X 10.8*.
 
 # Getting started
