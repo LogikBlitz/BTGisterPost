@@ -11,7 +11,8 @@ It has been tested in Xcode 4.6.2 on OS X 10.8*.
 # Getting started
 To install the plugin do the following.
 * Clone repo.
-* Copy the precompiled plugin from the folder: `"PathToRepo/PluginIsHere/BTGisterPost.xcplugin"`
+* Copy the precompiled plugin from the folder: 
+`"PathToRepo/PluginIsHere/BTGisterPost.xcplugin"`
 to `~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins`
 * Alternatively build the solution and the plugin will automatically be installed. Remember to restart XCode for the plugin to be activated.
 
