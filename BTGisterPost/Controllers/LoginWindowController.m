@@ -76,7 +76,7 @@
     
     UserCredential *credential = [[[UserCredential alloc]initWithUsernam:[self.usernameTextField stringValue] andPassword:[self.passwordTextField stringValue]] autorelease];
     
-    [self.delegate credentialCreated:credential];    
+    [self.delegate credentialCreated:credential];
 }
 
 
@@ -98,7 +98,16 @@
     [self validateAndCreateUserCredential];
 }
 
+- (void)resetFields{
+    self.usernameTextField.stringValue = @"";
+    self.passwordTextField.stringValue = @"";
+    
+    [[self.usernameTextField window]makeFirstResponder:self.usernameTextField];
+}
+
 - (void)showModalLoginViewInWindow:(NSWindow *)window{
+    [self resetFields];
+    
     if (!self.loginWindow){
         [NSBundle loadNibNamed:@"LoginWindow" owner:self];
     }

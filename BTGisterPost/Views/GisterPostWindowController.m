@@ -27,6 +27,7 @@
 #import "BTGitHubEngine.h"
 #import "LoginWindowController.h"
 #import "Gist.h"
+#import "Reachability.h"
 #import "NSAlert+EasyAlert.h"
 #import <IDEKit/IDEWorkspaceWindowController.h>
 #import <IDEKit/IDEEditorArea.h>
@@ -47,7 +48,15 @@ static Class IDEWorkspaceWindowControllerClass;
 @end
 
 @implementation GisterPostWindowController
-
++(BOOL)checkNet{
+    
+    Reachability *netStatus=[Reachability reachabilityWithHostname:@"www.google.com"];
+    
+    if ([netStatus currentReachabilityStatus] == IsNotReachable){
+        return NO;
+    }
+    return YES;
+}
 
 #pragma mark - Lifecycle
 
@@ -187,14 +196,27 @@ static Class IDEWorkspaceWindowControllerClass;
 }
 
 - (void)postGist{
-    NSError *error = nil;
-    [self postGist:self.gistText withDescription:[self.gistDescriptionTextField stringValue] andFilename:[self.fileNameTextField stringValue] andCredential:self.userCredential withError:&error];
     
-    if(error){
-        [self resetController];
-        [self makeWindowSolid];
-        [self showAlertSheetWithMessage:@"Github could not create gist" additionalInfo:@"Github refused the gist. Check your username and password." buttonOneText:@"OK" buttonTwoText:nil attachedToWindow:self.mainWindow withSelector:@selector(sheetDidEndShouldDelete:returnCode:contextInfo:)];
-    }
+    [self makeWindowInvisible];
+    [self postGist:self.gistText withDescription:[self.gistDescriptionTextField stringValue] andFilename:[self.fileNameTextField stringValue] andCredential:self.userCredential success:^(Gist *gist) {
+        dispatch_async(dispatch_get_main_queue(),
+                       ^{
+                           [self resignWindow];
+                           [self notifyWithText:@"Your gist was created and is available on GitHub." withTitle:@"Xcode Gister" andSubTitle:[NSString stringWithFormat:@"%@ Gist Created", gist.filename]];
+                           NSLog(@"BTGisterPost Message: %@ Gist Created", gist.filename);
+                       });
+        
+        
+    } andFailure:^(NSString *errorMessage) {
+        dispatch_async(dispatch_get_main_queue(),
+                       ^{
+                           [self resetController];
+                           [self makeWindowSolid];
+                           [self showAlertSheetWithMessage:@"Gist not created" additionalInfo:errorMessage buttonOneText:@"OK" buttonTwoText:nil attachedToWindow:self.mainWindow withSelector:@selector(sheetDidEndShouldDelete:returnCode:contextInfo:)];
+                       }
+                       );
+        
+    }];
 }
 
 - (void)commitGist{
@@ -230,6 +252,32 @@ static Class IDEWorkspaceWindowControllerClass;
     self.githubEngine = nil;
     self.userCredential = nil;
 }
+
+- (void)postGist:(NSString *)gistText withDescription:(NSString *)gistDescription andFilename:(NSString *)filename andCredential:(UserCredential *)credential success:(void (^)(Gist *gist))successBlock andFailure:(void (^)(NSString * errorMessage))failureBlock{
+    
+    BOOL isPublic = ![self.privateGistCheckBox state] == NSOnState;
+    
+    Gist *gist = [[[Gist alloc]initWithGistText:gistText andFilename:filename andDescription:gistDescription isPrivate:isPublic] retain];
+    
+    dispatch_queue_t workingQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+    dispatch_async(workingQueue,
+                   ^{
+                       BOOL isOnline = [GisterPostWindowController checkNet];
+                       if (!isOnline){
+                           failureBlock(@"Could not connect to GitHub. Check your internet connection");
+                       }
+                       else{
+                           [self.githubEngine createGist:[gist gistAsDictionary] success:^(id success) {
+                               successBlock(gist);
+                               
+                           } failure:^(NSError *gistError) {
+                               failureBlock(@"Github could not create the gist. Check username and password");
+                           }];
+                       }
+                   });
+    [gist release];
+}
+
 
 - (void)postGist:(NSString *)gistText withDescription:(NSString *)gistDescription andFilename:(NSString *)filename andCredential:(UserCredential *)credential withError:(NSError **)error{
     
