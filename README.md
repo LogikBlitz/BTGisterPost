@@ -1,4 +1,4 @@
-##BTGisterPost for XCode 4.\*  
+## BTGisterPost for XCode 4.\*  
 A small plug-in for Xcode 4.\* that allows for posting of Gist's directly from Xcode.
 It is purposely meant to be very small and not to intrusive.
 It is not the most pretty little thing, but it gets the job done.   
