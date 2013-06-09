@@ -8,11 +8,11 @@ __It has been tested in Xcode 4.6.2 on OS X 10.8\*__ but should work just fine i
 
 ### Getting started
 If you just want to install the plug-in the best way is to use the XCode package manager [Alcatraz](http://mneorr.github.com/Alcatraz).
-This plug-in is available, just look for **BTGisterPost** in the package list.  
+This plug-in is available in the package list, just look for **BTGisterPost** and check it for installation.  
 You can also build the plug-in directly from the source:
 * Clone this repository.
 * Open the project in Xcode 4+
-* Build the solution.
+* Build the solution -- the plug-in will automatically be installed.
 * Restart Xcode for the plug-in to be activated.
 
 #### How to use the plug-in
