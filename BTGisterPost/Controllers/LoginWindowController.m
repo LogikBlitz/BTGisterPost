@@ -24,6 +24,7 @@
 //
 
 #import "LoginWindowController.h"
+#import "NSAlert+EasyAlert.h"
 
 @interface LoginWindowController ()
 
@@ -46,53 +47,60 @@
 }
 
 
-- (void)alertWithMessage:(NSString *)message{
-    if (!self.loginWindow){
-        NSAlert *alert = [[[NSAlert alloc] init] retain];
-        [alert setMessageText: message];
-        [alert runModal];
-        [alert release];
-    }
-}
 
-- (IBAction)loginButtonPushed:(id)sender {
+- (BOOL)inputIsValid{
+    BOOL isValid = YES;
     NSString *username = [[self.usernameTextField stringValue] retain];
     if (!username || [username isEqualToString:@""]){
-        [self alertWithMessage:@"You must provide a username"];
-        return;
+        isValid = NO;
     }
     
     NSString *password = [[self.passwordTextField stringValue] retain];
     if (!password || [password isEqualToString:@""]){
-        [self alertWithMessage:@"You must provide a password"];
+        isValid = NO;
+    }
+    
+    [username release];
+    [password release];
+    
+    return isValid;
+}
+
+- (void)validateAndCreateUserCredential{
+    if (![self inputIsValid]){
+        [NSAlert alertWithMessage:@"Username or Password invalid format."];
         return;
     }
     
-    [self closeModelWindow:self];
+    [self closeModalWindow:self];
     
-    UserCredential *credential = [[[UserCredential alloc]initWithUsernam:username andPassword:password] retain];
+    UserCredential *credential = [[[UserCredential alloc]initWithUsernam:[self.usernameTextField stringValue] andPassword:[self.passwordTextField stringValue]] autorelease];
     
-    [self.delegate credentialCreated:credential];
-     
-    [username release];
-    [password release];
-    [credential release];  
+    [self.delegate credentialCreated:credential];    
+}
+
+
+- (IBAction)loginButtonPushed:(id)sender {
+    [self validateAndCreateUserCredential];
+    
 }
 
 - (IBAction)cancelButtonPushed:(id)sender {
-    [self closeModelWindow:self];
+    [self closeModalWindow:self];
+    
     
     if ([self.delegate respondsToSelector:@selector(userCancelledLogin)]){
         [self.delegate userCancelledLogin];
     }
 }
 
+- (IBAction)selector:(id)sender{
+    [self validateAndCreateUserCredential];
+}
+
 - (void)showModalLoginViewInWindow:(NSWindow *)window{
-    [NSBundle loadNibNamed:@"LoginWindow" owner:self];
-    
     if (!self.loginWindow){
-        [self alertWithMessage:@"my window was nil. cannot display modal. FATAL bug. report to developer"];
-        return;
+        [NSBundle loadNibNamed:@"LoginWindow" owner:self];
     }
     
     [NSApp beginSheet: self.loginWindow
@@ -103,7 +111,7 @@
 }
 
 
-- (void)closeModelWindow: (id)sender
+- (void)closeModalWindow: (id)sender
 {
     [NSApp endSheet:self.loginWindow];
     [self.loginWindow orderOut:self];

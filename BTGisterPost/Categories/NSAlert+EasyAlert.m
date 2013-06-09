@@ -1,5 +1,5 @@
 //
-//  GisterPostWindowController.h
+//  NSAlert+EasyAlert.m
 //  BTGisterPost
 //
 //  Copyright (c) 2013 Thomas Blitz
@@ -23,38 +23,16 @@
 // THE SOFTWARE.
 //
 
-#import <Cocoa/Cocoa.h>
-#import "UserCredential.h"
-#import "LoginProtocol.h"
+#import "NSAlert+EasyAlert.h"
 
-@interface GisterPostWindowController : NSWindowController <NSUserNotificationCenterDelegate, LoginProtocol, NSTextViewDelegate>
-
-//@property (nonatomic, assign) id<LoginProtocol> delegate;
-
-@property (nonatomic, copy) NSString *gistText;
-
-@property (nonatomic, retain) UserCredential *userCredential;
-
-@property (assign) IBOutlet NSView *commitView;
-
-@property (assign) IBOutlet NSWindow *mainWindow;
-
-@property (assign) IBOutlet NSButton *privateGistCheckBox;
-
-@property (assign) IBOutlet NSTextField *gistDescriptionTextField;
-
-@property (assign) IBOutlet NSTextField *fileNameTextField;
+@implementation NSAlert (EasyAlert)
 
 
-- (IBAction)CommitGistButtonPushed:(id)sender;
++ (void)alertWithMessage:(NSString *)message{
+    NSAlert *alert = [[[NSAlert alloc] init] retain];
+    [alert setMessageText: message];
+    [alert runModal];
+    [alert release];
+}
 
-- (IBAction)CancelCommitButtonPushed:(id)sender;
-
-- (IBAction)fileNameTextFieldEnterPushed:(id)sender;
-
-- (IBAction)descriptionTextFieldEnterPushed:(id)sender;
-
-- (void)showGistDialogWindowWithGistText:(NSString *)gistText;
-
-- (id)init;
 @end

@@ -95,12 +95,8 @@
     }
 }
 
-- (void) showMessageBox: (id) origin {
-    
-    [self.gistPostController showGistDialogWindowWithGistText:self.selectedText];
-}
 
-- (void) postGistToGitHub{    
+- (void) postGistToGitHub{
     [self.gistPostController showGistDialogWindowWithGistText:self.selectedText];
 }
 

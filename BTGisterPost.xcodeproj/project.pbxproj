@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82067CEB1763EE79000EA724 /* NSAlert+EasyAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 82067CEA1763EE79000EA724 /* NSAlert+EasyAlert.m */; };
 		824D3CFD1762787600B4A4BD /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824D3CFC1762787600B4A4BD /* AppKit.framework */; };
 		824D3CFF1762787600B4A4BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824D3CFE1762787600B4A4BD /* Foundation.framework */; };
 		824D3D051762787600B4A4BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 824D3D031762787600B4A4BD /* InfoPlist.strings */; };
@@ -31,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		82067CE91763EE79000EA724 /* NSAlert+EasyAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+EasyAlert.h"; sourceTree = "<group>"; };
+		82067CEA1763EE79000EA724 /* NSAlert+EasyAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+EasyAlert.m"; sourceTree = "<group>"; };
 		824D3CF91762787600B4A4BD /* BTGisterPost.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTGisterPost.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		824D3CFC1762787600B4A4BD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		824D3CFE1762787600B4A4BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -88,6 +91,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82067CE81763EE37000EA724 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				82067CE91763EE79000EA724 /* NSAlert+EasyAlert.h */,
+				82067CEA1763EE79000EA724 /* NSAlert+EasyAlert.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		824D3CF01762787600B4A4BD = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +131,7 @@
 		824D3D001762787600B4A4BD /* BTGisterPost */ = {
 			isa = PBXGroup;
 			children = (
+				82067CE81763EE37000EA724 /* Categories */,
 				825AC74A17627BA500D84DB2 /* Protocols */,
 				824D3D4E176279E600B4A4BD /* Models */,
 				824D3D4D176279D400B4A4BD /* Controllers */,
@@ -286,6 +299,7 @@
 				824D3D5817627B6600B4A4BD /* UserCredential.m in Sources */,
 				82B951E217635EAF004BE93B /* LoginWindowController.m in Sources */,
 				82C5730C17636EFA00957537 /* Gist.m in Sources */,
+				82067CEB1763EE79000EA724 /* NSAlert+EasyAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
