@@ -28,9 +28,19 @@
 #import "LoginWindowController.h"
 #import "Gist.h"
 #import "NSAlert+EasyAlert.h"
+#import <IDEKit/IDEWorkspaceWindowController.h>
+#import <IDEKit/IDEEditorArea.h>
+
+id objc_getClass(const char* name);
+
+static Class DVTSourceTextViewClass;
+static Class IDESourceCodeEditorClass;
+static Class IDEApplicationClass;
+static Class IDEWorkspaceWindowControllerClass;
 
 
 @interface GisterPostWindowController ()
+@property (nonatomic, retain) id ideWorkspaceWindow;
 @property (nonatomic, retain) BTGitHubEngine *githubEngine;
 @property (nonatomic, retain) NSUserNotificationCenter *notificationCenter;
 @property (nonatomic, retain) LoginWindowController *loginWindowController;
@@ -48,13 +58,25 @@
         _notificationCenter = [[NSUserNotificationCenter defaultUserNotificationCenter] retain];
         _notificationCenter.delegate = self;
         _loginWindowController = [[[LoginWindowController alloc] initWithDelegate:self]retain];
+        DVTSourceTextViewClass = objc_getClass("DVTSourceTextView");
+        IDESourceCodeEditorClass = objc_getClass("IDESourceCodeEditor");
+        IDEApplicationClass = objc_getClass("IDEApplication");
+        IDEWorkspaceWindowControllerClass = objc_getClass("IDEWorkspaceWindowController");
         
+        
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc addObserver:self
+               selector:@selector(fetchActiveIDEWorkspaceWindow:)
+                   name:NSWindowDidUpdateNotification
+                 object:nil];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     self.githubEngine = nil;
     [self.githubEngine dealloc];
     
@@ -70,6 +92,9 @@
     self.loginWindowController = nil;
     [self.loginWindowController dealloc];
     
+    self.ideWorkspaceWindow = nil;
+    [self.ideWorkspaceWindow dealloc];
+    
     self.mainWindow = nil;
     
     self.privateGistCheckBox = nil;
@@ -81,6 +106,36 @@
     
     [super dealloc];
 }
+
+#pragma mark - Helper
+- (NSURL *)activeDocument
+{
+    for (id workspaceWindowController in [IDEWorkspaceWindowControllerClass workspaceWindowControllers])
+    {
+        if ([workspaceWindowController workspaceWindow] == self.ideWorkspaceWindow)
+        {
+            return [[[workspaceWindowController editorArea] primaryEditorDocument] fileURL];
+        }
+    }
+    
+    return nil;
+}
+
+- (NSString *)currentDocumentName{
+    NSURL *activeDocumentURL = [self activeDocument];
+    NSString *activeDocumentFilename = [activeDocumentURL lastPathComponent];
+    
+    return activeDocumentFilename;
+}
+
+- (void)defineFirstReponderTextField{
+    if(!self.fileNameTextField || [self.fileNameTextField.stringValue isEqualToString:@""]){
+        [[self.fileNameTextField window]makeFirstResponder:self.fileNameTextField];
+    }else{
+        [[self.gistDescriptionTextField window]makeFirstResponder:self.gistDescriptionTextField];
+    }
+}
+
 
 #pragma mark - LoginProtocol Implementation
 
@@ -139,7 +194,7 @@
         [self resetController];
         [self makeWindowSolid];
         [self showAlertSheetWithMessage:@"Github could not create gist" additionalInfo:@"Github refused the gist. Check your username and password." buttonOneText:@"OK" buttonTwoText:nil attachedToWindow:self.mainWindow withSelector:@selector(sheetDidEndShouldDelete:returnCode:contextInfo:)];
-    }    
+    }
 }
 
 - (void)commitGist{
@@ -152,16 +207,23 @@
     
 }
 
+
 //Only public method
 - (void)showGistDialogWindowWithGistText:(NSString *)gistText{
     self.gistText = gistText;
+    NSString *filename =[self currentDocumentName];
     if (!self.gistText || [self.gistText isEqualToString:@""] ){
-        [NSAlert alertWithMessage:@"No text was submitted for the gist. Please select the text to turn into a gist."];
+        NSRunAlertPanel(@"No Gist text selected", @"No text was submitted for the gist. Please select the text to turn into a gist.", @"OK", nil, nil, nil);
         [self resignWindow];
         return;
     }
     [NSBundle loadNibNamed:@"GisterPostWindow" owner:self];
+    
+    
+    
     [self.mainWindow makeKeyAndOrderFront:self];
+    [self.fileNameTextField setStringValue:filename];
+    [self defineFirstReponderTextField];
 }
 
 - (void)resetController{
@@ -180,6 +242,7 @@
     [self.githubEngine createGist:[gist gistAsDictionary] success:^(id success) {
         [self resignWindow];
         [self notifyWithText:@"Your gist was created and is available on GitHub." withTitle:@"Xcode Gister" andSubTitle:[NSString stringWithFormat:@"%@ Gist Created", gist.filename]];
+        NSLog(@"BTGisterPost Message: %@ Gist Created", gist.filename);
         
     } failure:^(NSError *gistError) {
         *error = gistError;
@@ -220,8 +283,8 @@
                       selector,                   // no need for did-dismiss selector
                       window,                 // context info
                       additionalInfo);
-
-
+    
+    
 }
 
 - (void)sheetDidEndShouldDelete: (NSWindow *)sheet
@@ -235,6 +298,17 @@
     
 }
 
+// ------------------------------------------------------------------------------------------
+#pragma mark - Notifications
+// ------------------------------------------------------------------------------------------
+- (void)fetchActiveIDEWorkspaceWindow:(NSNotification *)notification
+{
+    id window = [notification object];
+    if ([window isKindOfClass:[NSWindow class]] && [window isMainWindow])
+    {
+        self.ideWorkspaceWindow = window;
+    }
+}
 
 #pragma mark - User notification OSX 10.8
 

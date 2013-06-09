@@ -44,7 +44,6 @@
     NSDictionary *filenameDict = @{self.filename: contentDict};
     NSNumber *isPublicNumber = [NSNumber numberWithBool:self.isPublic];
     
-    NSLog(@"Is publicNumber is: %@", isPublicNumber);
     NSDictionary *gistDict = @{@"description": self.description,
                                @"public": isPublicNumber,
                                @"files":filenameDict
