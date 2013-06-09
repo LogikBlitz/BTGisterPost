@@ -4,7 +4,7 @@ It is purposely meant to be very small and not to intrusive.
 It is not the most pretty little thing, but it gets the job done.   
 Think of it as your friendly Gist hammer:-D.  
 
-**It has been tested in Xcode 4.6.2 on OS X 10.8\* ** but should work in Xcode 4.\* and OS X 10.7 (Without user notifications).
+__It has been tested in Xcode 4.6.2 on OS X 10.8\*__ but should work just fine in Xcode 4.\* and OS X 10.7 (Without user notifications).
 
 ### Getting started
 To install the plug-in do the following.
