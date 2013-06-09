@@ -7,29 +7,29 @@ Think of it as your friendly Gist hammer:-D.
 __It has been tested in Xcode 4.6.2 on OS X 10.8\*__ but should work just fine in Xcode 4.\* and OS X 10.7 (Without user notifications).
 
 ### Getting started
-To install the plug-in do the following.
-* Clone this repo.
-* Preferable you should build the solution and the plug-in will automatically be installed. Remember to restart XCode for the plug-in to be activated.
-* You can also copy the precompiled plug-in from the folder: 
-`"PathToRepo/PluginIsHere/BTGisterPost.xcplugin"`
-to `~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins`
+If you just want to install the plug-in the best way is to use the XCode package manager [Alcatraz](http://mneorr.github.com/Alcatraz).
+This plug-in is available, just look for **BTGisterPost** in the package list.  
+You can also build the plug-in directly from the source:
+* Clone this repository.
+* Open the project in Xcode 4+
+* Build the solution.
+* Restart Xcode for the plug-in to be activated.
 
-#### Alcatraz
-A pull request is issued to [Alcatraz](http://mneorr.github.com/Alcatraz). Expect the plug-in to be available shortly.
-
-#### How to use the plugin
+#### How to use the plug-in
 In Xcode the plug-in will add a new menu-point in the `edit` menu: `Post Gist To Github`.
 Alternatively you can also use the shortcut `⌥ + c` i.e. `(option + c)`
 to trigger the plug-in.  
-It will post the currently selected text as a gist.
+It will use the currently selected text to create a gist.  
 If no text is selected all text in the current open document will be converted into a gist.
 
-##### Github user credentials.
+##### GitHub user credentials.
 To post a gist the plug-in requires a **username*** and **password** to a valid GitHub account. Your information is not in any way used for anything else but creating Gist's. If you have any concerns feel free to check the source.
 
 ### Uninstall
 To uninstall the plug-in simply delete it from the folder where it resides:
-`~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins/BTGisterPost.xcplugin`
+`~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins/BTGisterPost.xcplugin`  
+Or if using **Alzatraz** just uncheck the plug-in in the package list, and it should be removed.  
+Remember to restart Xcode for the removal to take effect.
 
 ### Dependencies
 The plug-in uses a modified version of [UAGithubEngine](https://github.com/owainhunt/uagithubengine) for GitHub communication. The framework has been scaled down a bit, and converted to not use ARC, since ARC is not supported in Xcode plug-ins.
