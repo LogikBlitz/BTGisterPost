@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="BTGisterPost : A small plugin for Xcode that allows for posting of Gist's directly from Xcode." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>BTGisterPost</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/LogikBlitz/BTGisterPost">View on GitHub</a>
+
+          <h1 id="project_title">BTGisterPost</h1>
+          <h2 id="project_tagline">A small plugin for Xcode that allows for posting of Gist's directly from Xcode.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/LogikBlitz/BTGisterPost/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/LogikBlitz/BTGisterPost/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h2>
+<a name="btgisterpost-for-xcode-4" class="anchor" href="#btgisterpost-for-xcode-4"><span class="octicon octicon-link"></span></a>BTGisterPost for XCode 4.*</h2>
+
+<p>A small plug-in for Xcode 4.* that allows for posting of Gist's directly from Xcode.
+It is purposely meant to be very small and not to intrusive.
+It is not the most pretty little thing, but it gets the job done.<br>
+Think of it as your friendly Gist hammer:-D.  </p>
+
+<p><strong>It has been tested in Xcode 4.6.2 on OS X 10.8*</strong> but should work just fine in Xcode 4.* and OS X 10.7 (Without user notifications).</p>
+
+<h3>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h3>
+
+<p>If you just want to install the plug-in the best way is to use the XCode package manager <a href="http://mneorr.github.com/Alcatraz">Alcatraz</a>.
+This plug-in is available in the package list, just look for <strong>BTGisterPost</strong> and check it for installation.<br>
+You can also build the plug-in directly from the source:</p>
+
+<ul>
+<li>Clone this repository.</li>
+<li>Open the project in Xcode 4+</li>
+<li>Build the solution -- the plug-in will automatically be installed.</li>
+<li>Restart Xcode for the plug-in to be activated.</li>
+</ul><h4>
+<a name="how-to-use-the-plug-in" class="anchor" href="#how-to-use-the-plug-in"><span class="octicon octicon-link"></span></a>How to use the plug-in</h4>
+
+<p>In Xcode the plug-in will add a new menu-point in the <code>edit</code> menu: <code>Post Gist To Github</code>.
+Alternatively you can also use the shortcut <code>⌥ + c</code> i.e. <code>(option + c)</code>
+to trigger the plug-in.<br>
+It will use the currently selected text to create a gist.<br>
+If no text is selected all text in the current open document will be converted into a gist.</p>
+
+<h5>
+<a name="github-user-credentials" class="anchor" href="#github-user-credentials"><span class="octicon octicon-link"></span></a>GitHub user credentials.</h5>
+
+<p>To post a gist the plug-in requires a <strong>username</strong>* and <strong>password</strong> to a valid GitHub account. Your information is not in any way used for anything else but creating Gist's. If you have any concerns feel free to check the source.</p>
+
+<h3>
+<a name="uninstall" class="anchor" href="#uninstall"><span class="octicon octicon-link"></span></a>Uninstall</h3>
+
+<p>To uninstall the plug-in simply delete it from the folder where it resides:
+<code>~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins/BTGisterPost.xcplugin</code><br>
+Or if using <strong>Alzatraz</strong> just uncheck the plug-in in the package list, and it should be removed.<br>
+Remember to restart Xcode for the removal to take effect.</p>
+
+<h3>
+<a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h3>
+
+<p>The plug-in uses a modified version of <a href="https://github.com/owainhunt/uagithubengine">UAGithubEngine</a> for GitHub communication. The framework has been scaled down a bit, and converted to not use ARC, since ARC is not supported in Xcode plug-ins.</p>
+
+<h3>
+<a name="contributions" class="anchor" href="#contributions"><span class="octicon octicon-link"></span></a>Contributions</h3>
+
+<p>If you would like to contribute to the plug-in, simply fork the project and submit a pull request. See <a href="https://help.github.com/articles/fork-a-repo">GitHub help</a></p>
+
+<h3>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h3>
+
+<p>The MIT License (MIT)</p>
+
+<p>Copyright (c) 2013 Thomas Blitz</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">BTGisterPost maintained by <a href="https://github.com/LogikBlitz">LogikBlitz</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
