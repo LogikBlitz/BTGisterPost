@@ -27,7 +27,7 @@
 #import <Cocoa/Cocoa.h>
 #import "LoginProtocol.h"
 
-@interface LoginWindowController : NSWindowController
+@interface LoginWindowController : NSWindowController <NSTextViewDelegate>
 
 @property (assign) IBOutlet NSWindow *loginWindow;
 
@@ -37,12 +37,15 @@
 
 @property (nonatomic, assign) id<LoginProtocol> delegate;
 
+
+- (IBAction)selector:(id)sender;
+
 - (IBAction)loginButtonPushed:(id)sender;
 - (IBAction)cancelButtonPushed:(id)sender;
 
 - (void)showModalLoginViewInWindow:(NSWindow *)window;
 
-- (void)closeModelWindow: (id)sender;
+- (void)closeModalWindow: (id)sender;
 
 - (id)initWithDelegate:(id<LoginProtocol>)delegate;
 @end
