@@ -45,7 +45,6 @@ static Class IDEWorkspaceWindowControllerClass;
 @property (nonatomic, retain) BTGitHubEngine *githubEngine;
 @property (nonatomic, retain) NSUserNotificationCenter *notificationCenter;
 @property (nonatomic, retain) LoginWindowController *loginWindowController;
-@property (nonatomic, retain) Gist *gist;
 @end
 
 @implementation GisterPostWindowController
@@ -113,9 +112,6 @@ static Class IDEWorkspaceWindowControllerClass;
     
     self.fileNameTextField = nil;
     self.commitView = nil;
-    
-    self.gist = nil;
-    [self.gist dealloc];
     
     [super dealloc];
 }
@@ -206,10 +202,9 @@ static Class IDEWorkspaceWindowControllerClass;
         dispatch_async(dispatch_get_main_queue(),
                        ^{
                            [self resignWindow];
-                           self.gist = gist;
                            NSString *text = nil;
                            if (gist.gistUrlString)
-                               text = [NSString stringWithFormat:@"Gist link: %@", gist.gistUrlString ];
+                               text = [NSString stringWithFormat:@"%@", gist.gistUrlString ];
                            else
                                text = [NSString stringWithFormat:@"%@ Gist Created", gist.filename];
                            
@@ -372,14 +367,12 @@ static Class IDEWorkspaceWindowControllerClass;
 
 - (void) userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
 {
-    if (self.gist){
-        if (self.gist.gistUrlString){
-             [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:self.gist.gistUrlString]];
+    if (notification){
+        if (notification.informativeText){
+            NSURL *url = [NSURL URLWithString:notification.informativeText];
+             [[NSWorkspace sharedWorkspace] openURL:url];
         }
-    }
-    self.gist = nil;
-    [self.gist dealloc];
-   
+    }  
 }
 
 
