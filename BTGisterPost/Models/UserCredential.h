@@ -29,5 +29,5 @@
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *password;
 
-- (id)initWithUsernam:(NSString *)username andPassword:(NSString *)password;
+- (id)initWithUsername:(NSString *)username andPassword:(NSString *)password;
 @end

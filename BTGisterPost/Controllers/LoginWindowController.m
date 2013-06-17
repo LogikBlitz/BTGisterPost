@@ -74,7 +74,7 @@
     
     [self closeModalWindow:self];
     
-    UserCredential *credential = [[[UserCredential alloc]initWithUsernam:[self.usernameTextField stringValue] andPassword:[self.passwordTextField stringValue]] autorelease];
+    UserCredential *credential = [[[UserCredential alloc]initWithUsername:[self.usernameTextField stringValue] andPassword:[self.passwordTextField stringValue]] autorelease];
     
     [self.delegate credentialCreated:credential];
 }

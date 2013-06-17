@@ -26,7 +26,7 @@
 #import "UserCredential.h"
 
 @implementation UserCredential
-- (id)initWithUsernam:(NSString *)username andPassword:(NSString *)password
+- (id)initWithUsername:(NSString *)username andPassword:(NSString *)password
 {
     self = [super init];
     if (self) {

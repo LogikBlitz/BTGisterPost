@@ -45,6 +45,7 @@ static Class IDEWorkspaceWindowControllerClass;
 @property (nonatomic, retain) BTGitHubEngine *githubEngine;
 @property (nonatomic, retain) NSUserNotificationCenter *notificationCenter;
 @property (nonatomic, retain) LoginWindowController *loginWindowController;
+@property (nonatomic, retain) Gist *gist;
 @end
 
 @implementation GisterPostWindowController
@@ -112,6 +113,9 @@ static Class IDEWorkspaceWindowControllerClass;
     
     self.fileNameTextField = nil;
     self.commitView = nil;
+    
+    self.gist = nil;
+    [self.gist dealloc];
     
     [super dealloc];
 }
@@ -202,8 +206,15 @@ static Class IDEWorkspaceWindowControllerClass;
         dispatch_async(dispatch_get_main_queue(),
                        ^{
                            [self resignWindow];
-                           [self notifyWithText:@"Your gist was created and is available on GitHub." withTitle:@"Xcode Gister" andSubTitle:[NSString stringWithFormat:@"%@ Gist Created", gist.filename]];
-                           NSLog(@"BTGisterPost Message: %@ Gist Created", gist.filename);
+                           self.gist = gist;
+                           NSString *text = nil;
+                           if (gist.gistUrlString)
+                               text = [NSString stringWithFormat:@"Gist link: %@", gist.gistUrlString ];
+                           else
+                               text = [NSString stringWithFormat:@"%@ Gist Created", gist.filename];
+                           
+                           [self notifyWithText:text withTitle:@"Xcode Gister" andSubTitle:@"Gist Created on GitHub"];
+                           NSLog(@"BTGisterPost Message: %@ Gist Created with URL: %@", gist.filename, gist.gistUrlString);
                        });
         
         
@@ -215,7 +226,6 @@ static Class IDEWorkspaceWindowControllerClass;
                            [self showAlertSheetWithMessage:@"Gist not created" additionalInfo:errorMessage buttonOneText:@"OK" buttonTwoText:nil attachedToWindow:self.mainWindow withSelector:@selector(sheetDidEndShouldDelete:returnCode:contextInfo:)];
                        }
                        );
-        
     }];
 }
 
@@ -264,10 +274,15 @@ static Class IDEWorkspaceWindowControllerClass;
                    ^{
                        BOOL isOnline = [GisterPostWindowController checkNet];
                        if (!isOnline){
-                           failureBlock(@"Could not connect to GitHub. Check your internet connection");
+                           failureBlock(@"Network connection seems to be unavailable.");
                        }
                        else{
                            [self.githubEngine createGist:[gist gistAsDictionary] success:^(id success) {
+                               NSDictionary *dict = [(NSArray *)success objectAtIndex:0];
+                               
+                               if (dict)
+                                   gist.gistUrlString = [dict objectForKey:@"html_url"];
+                               
                                successBlock(gist);
                                
                            } failure:^(NSError *gistError) {
@@ -278,26 +293,6 @@ static Class IDEWorkspaceWindowControllerClass;
     [gist release];
 }
 
-
-- (void)postGist:(NSString *)gistText withDescription:(NSString *)gistDescription andFilename:(NSString *)filename andCredential:(UserCredential *)credential withError:(NSError **)error{
-    
-    BOOL isPublic = ![self.privateGistCheckBox state] == NSOnState;
-    
-    Gist *gist = [[[Gist alloc]initWithGistText:gistText andFilename:filename andDescription:gistDescription isPrivate:isPublic] retain];
-    
-    [self makeWindowInvisible];
-    
-    [self.githubEngine createGist:[gist gistAsDictionary] success:^(id success) {
-        [self resignWindow];
-        [self notifyWithText:@"Your gist was created and is available on GitHub." withTitle:@"Xcode Gister" andSubTitle:[NSString stringWithFormat:@"%@ Gist Created", gist.filename]];
-        NSLog(@"BTGisterPost Message: %@ Gist Created", gist.filename);
-        
-    } failure:^(NSError *gistError) {
-        *error = gistError;
-    }];
-    
-    [gist release];
-}
 
 #pragma mark - Window Actions and outlets
 - (IBAction)CancelCommitButtonPushed:(id)sender {
@@ -374,6 +369,20 @@ static Class IDEWorkspaceWindowControllerClass;
 {
     return YES;
 }
+
+- (void) userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
+{
+    if (self.gist){
+        if (self.gist.gistUrlString){
+             [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:self.gist.gistUrlString]];
+        }
+    }
+    self.gist = nil;
+    [self.gist dealloc];
+   
+}
+
+
 
 
 #pragma mark - Custom property accessors

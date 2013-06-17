@@ -27,10 +27,11 @@
 
 @interface Gist : NSObject
 
-@property (nonatomic, retain) NSString *gistText;
-@property (nonatomic, retain) NSString *filename;
-@property (nonatomic, retain) NSString *description;
+@property (nonatomic, copy) NSString *gistText;
+@property (nonatomic, copy) NSString *filename;
+@property (nonatomic, copy) NSString *description;
 @property (nonatomic) BOOL isPublic;
+@property (nonatomic, copy) NSString *gistUrlString;
 
 - (id)initWithGistText:(NSString *)gistText andFilename:(NSString *)filename andDescription:(NSString *)description isPrivate:(BOOL)isPublic;
 
