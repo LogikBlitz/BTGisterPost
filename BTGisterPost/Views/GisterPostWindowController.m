@@ -274,7 +274,7 @@ static Class IDEWorkspaceWindowControllerClass;
                        }
                        else{
                            [self.githubEngine createGist:[gist gistAsDictionary] success:^(id success) {
-                               //NSLog(@"SUCCESS");
+                                //NSLog(@"SUCCESS");
                                //NSLog(@"Succes is %@", success);
                                //NSDictionary *dict = [(NSArray *)success objectAtIndex:0];
                                //NSLog(@"About to LOOK in dict after url");
