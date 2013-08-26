@@ -472,13 +472,14 @@
 {
     NSError *error = nil;
     NSError **errorPointer = &error;
-    id result;
+    id result;// result = nil;
     
     NSInvocation *invocation = [NSInvocation jr_invocationWithTarget:self block:invocationBlock];
     // Method signatures differ between invocations, but the last argument is always where the NSError lives
     [invocation setArgument:&errorPointer atIndex:[[invocation methodSignature] numberOfArguments] - 1];
     [invocation invoke];
     [invocation getReturnValue:&result];
+    
     
     if (error)
     {
