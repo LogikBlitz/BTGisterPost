@@ -196,11 +196,12 @@ static Class IDEWorkspaceWindowControllerClass;
 }
 
 - (void)postGist{
-    
+    NSLog(@"POSTGIST");
     [self makeWindowInvisible];
     [self postGist:self.gistText withDescription:[self.gistDescriptionTextField stringValue] andFilename:[self.fileNameTextField stringValue] andCredential:self.userCredential success:^(Gist *gist) {
         dispatch_async(dispatch_get_main_queue(),
                        ^{
+                           NSLog(@"MAIN QUEUE ");
                            [self resignWindow];
                            NSString *text = nil;
                            if (gist.gistUrlString)
@@ -273,11 +274,13 @@ static Class IDEWorkspaceWindowControllerClass;
                        }
                        else{
                            [self.githubEngine createGist:[gist gistAsDictionary] success:^(id success) {
-                               NSDictionary *dict = [(NSArray *)success objectAtIndex:0];
-                               
-                               if (dict)
-                                   gist.gistUrlString = [dict objectForKey:@"html_url"];
-                               
+                               //NSLog(@"SUCCESS");
+                               //NSLog(@"Succes is %@", success);
+                               //NSDictionary *dict = [(NSArray *)success objectAtIndex:0];
+                               //NSLog(@"About to LOOK in dict after url");
+                               //if (dict)
+                                   //gist.gistUrlString = [dict objectForKey:@"html_url"];
+                               //NSLog(@"About to call SUCCESSBLOCK");
                                successBlock(gist);
                                
                            } failure:^(NSError *gistError) {
@@ -285,6 +288,7 @@ static Class IDEWorkspaceWindowControllerClass;
                            }];
                        }
                    });
+    NSLog(@"About to RELEASE gist");
     [gist release];
 }
 

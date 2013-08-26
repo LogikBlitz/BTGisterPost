@@ -389,7 +389,7 @@
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(HOME)";
 				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_OBJC_GC = required;
+				GCC_ENABLE_OBJC_GC = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BTGisterPost/BTGisterPost-Prefix.pch";
 				HEADER_SEARCH_PATHS = Libraries/XcodeFrameworks;
@@ -407,7 +407,7 @@
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(HOME)";
 				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_ENABLE_OBJC_GC = required;
+				GCC_ENABLE_OBJC_GC = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BTGisterPost/BTGisterPost-Prefix.pch";
 				HEADER_SEARCH_PATHS = Libraries/XcodeFrameworks;
