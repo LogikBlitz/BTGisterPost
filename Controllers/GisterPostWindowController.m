@@ -186,7 +186,7 @@ static Class IDEWorkspaceWindowControllerClass;
                            else
                                text = [NSString stringWithFormat:@"%@ Gist Created", gist.filename];
                            
-                           [self notifyWithText:text withTitle:@"Xcode Gister" andSubTitle:@"Gist Created on GitHub"];
+                           [self notifyWithText:text withTitle:@"Xcode BTGisterPost" andSubTitle:@"Gist Created on GitHub"];
                            NSLog(@"BTGisterPost Message: %@ Gist Created with URL: %@", gist.filename, gist.gistUrlString);
                        });
         
@@ -253,13 +253,9 @@ static Class IDEWorkspaceWindowControllerClass;
                        }
                        else{
                            [self.githubEngine createGist:[gist gistAsDictionary] success:^(id success) {
-                                NSLog(@"SUCCESS");
-                               //NSLog(@"Succes is %@", success);
-                               //NSDictionary *dict = [(NSArray *)success objectAtIndex:0];
-                               NSLog(@"About to LOOK in dict after url");
-                               //if (dict)
-                                 //  gist.gistUrlString = [dict objectForKey:@"html_url"];
-                               NSLog(@"About to call SUCCESSBLOCK");
+                               NSDictionary *dict = [(NSArray *)success objectAtIndex:0];
+                               if (dict)
+                                   gist.gistUrlString = [dict objectForKey:@"html_url"];
                                successBlock(gist);
                                
                            } failure:^(NSError *gistError) {
@@ -267,7 +263,6 @@ static Class IDEWorkspaceWindowControllerClass;
                            }];
                        }
                    });
-    NSLog(@"About to RELEASE gist");
 }
 
 
@@ -330,7 +325,7 @@ static Class IDEWorkspaceWindowControllerClass;
     }
 }
 
-#pragma mark - User notification OSX 10.8
+#pragma mark - User notification OSX 10.8 +10.9
 
 - (void)notifyWithText:(NSString *)text withTitle:(NSString *)title andSubTitle:(NSString *)subTitle{
     
