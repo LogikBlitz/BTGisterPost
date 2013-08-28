@@ -29,10 +29,9 @@
 
 
 + (void)alertWithMessage:(NSString *)message{
-    NSAlert *alert = [[[NSAlert alloc] init] retain];
+    NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText: message];
     [alert runModal];
-    [alert release];
 }
 
 @end

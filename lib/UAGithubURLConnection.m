@@ -12,6 +12,7 @@
 
 @implementation UAGithubURLConnection
 
+@synthesize data, requestType, responseType, identifier;
 
 + (id)asyncRequest:(NSURLRequest *)request success:(id(^)(NSData *, NSURLResponse *))successBlock failure:(id(^)(NSError *))failureBlock_ 
 {
@@ -58,17 +59,6 @@
     }
     
 	//});
-}
-
-- (void)dealloc{
-    _data = nil;
-    [_data release];
-    
-    _identifier = nil;
-    [_identifier dealloc];
-
-    
-    [super dealloc];    
 }
 
 @end

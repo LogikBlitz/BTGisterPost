@@ -51,20 +51,5 @@
     return gistDict;
 
 }
-- (void)dealloc
-{
-    self.gistText = nil;
-    [self.gistText dealloc];
-    
-    self.filename = nil;
-    [self.filename dealloc];
-    
-    self.description = nil;
-    [self.description dealloc];
-    
-    self.gistUrlString = nil;
-    [self.gistUrlString dealloc];
-    
-    [super dealloc];
-}
+
 @end

@@ -8,8 +8,8 @@
     id              target;
     NSInvocation    *invocation;
 }
-@property (retain) id target;
-@property (retain) NSInvocation *invocation;
+@property (strong) id target;
+@property (strong) NSInvocation *invocation;
 @end
 
 @implementation JRInvocationGrabber
@@ -29,14 +29,6 @@
     self.invocation = invocation_;
 }
 
-- (void)dealloc {
-    self.target = nil;
-    self.invocation = nil;
-    [self.target dealloc];
-    [self.invocation dealloc];
-    
-    [super dealloc];
-}
 @end
 
 

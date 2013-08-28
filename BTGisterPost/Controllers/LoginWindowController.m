@@ -50,18 +50,15 @@
 
 - (BOOL)inputIsValid{
     BOOL isValid = YES;
-    NSString *username = [[self.usernameTextField stringValue] retain];
+    NSString *username = [self.usernameTextField stringValue];
     if (!username || [username isEqualToString:@""]){
         isValid = NO;
     }
     
-    NSString *password = [[self.passwordTextField stringValue] retain];
+    NSString *password = [self.passwordTextField stringValue];
     if (!password || [password isEqualToString:@""]){
         isValid = NO;
     }
-    
-    [username release];
-    [password release];
     
     return isValid;
 }
@@ -74,7 +71,7 @@
     
     [self closeModalWindow:self];
     
-    UserCredential *credential = [[[UserCredential alloc]initWithUsername:[self.usernameTextField stringValue] andPassword:[self.passwordTextField stringValue]] autorelease];
+    UserCredential *credential = [[UserCredential alloc]initWithUsername:[self.usernameTextField stringValue] andPassword:[self.passwordTextField stringValue]];
     
     [self.delegate credentialCreated:credential];
 }
@@ -131,15 +128,6 @@
     [sheet orderOut:self];
 }
 
-
-- (void)dealloc
-{
-    self.loginWindow = nil;
-    self.usernameTextField = nil;
-    self.passwordTextField = nil;
-    self.delegate = nil;
-    [super dealloc];
-}
 
 
 @end

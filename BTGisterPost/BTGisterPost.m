@@ -29,8 +29,8 @@
 
 @interface BTGisterPost ()
 
-@property (nonatomic, retain) UserCredential *userCredential;
-@property (nonatomic, retain) GisterPostWindowController *gistPostController;
+@property (nonatomic, strong) UserCredential *userCredential;
+@property (nonatomic, strong) GisterPostWindowController *gistPostController;
 
 @end
 
@@ -49,7 +49,7 @@
 
 - (id)init {
 	if (self = [super init]) {
-        _gistPostController = [[GisterPostWindowController alloc]init];
+        self.gistPostController = [[GisterPostWindowController alloc]init];
 		[[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(applicationDidFinishLaunching:)
                                                      name:NSApplicationDidFinishLaunchingNotification
@@ -72,8 +72,7 @@
                                                       keyEquivalent:@"c"];
         [newMenuItem setTarget:self];
         [newMenuItem setKeyEquivalentModifierMask: NSAlternateKeyMask];
-        [[editMenuItem submenu] addItem:newMenuItem];
-        [newMenuItem release];
+        [[editMenuItem submenu] addItem:newMenuItem];;
     }
 }
 
@@ -104,10 +103,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    self.gistPostController = nil;
-    [self.gistPostController dealloc];
-    
-    [super dealloc];
 }
 
 @end

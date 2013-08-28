@@ -18,8 +18,7 @@
     CFUUIDRef uuidObj = CFUUIDCreate(nil);
     
     // Get the string representation of the UUID
-    NSString *newUUID = (NSString*)CFUUIDCreateString(nil, uuidObj);
-    [newUUID autorelease];
+    NSString *newUUID = (NSString*)CFBridgingRelease(CFUUIDCreateString(nil, uuidObj));
     CFRelease(uuidObj);
     return newUUID;
 }

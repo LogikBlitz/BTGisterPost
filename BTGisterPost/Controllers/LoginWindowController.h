@@ -29,13 +29,13 @@
 
 @interface LoginWindowController : NSWindowController <NSTextViewDelegate>
 
-@property (assign) IBOutlet NSWindow *loginWindow;
+@property (weak) IBOutlet NSWindow *loginWindow;
 
-@property (assign) IBOutlet NSTextField *usernameTextField;
+@property (weak) IBOutlet NSTextField *usernameTextField;
 
-@property (assign) IBOutlet NSTextField *passwordTextField;
+@property (weak) IBOutlet NSTextField *passwordTextField;
 
-@property (nonatomic, assign) id<LoginProtocol> delegate;
+@property (nonatomic, weak) id<LoginProtocol> delegate;
 
 
 - (IBAction)selector:(id)sender;

@@ -35,7 +35,7 @@
 
 - (NSString *)encodedString
 {
-    return (NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, ( CFStringRef)self, NULL, (CFStringRef)@";/?:@&=$+{}<>,", kCFStringEncodingUTF8);
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (__bridge CFStringRef)self, NULL, (CFStringRef)@";/?:@&=$+{}<>,", kCFStringEncodingUTF8));
 
 }
 

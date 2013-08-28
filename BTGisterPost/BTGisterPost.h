@@ -26,5 +26,5 @@
 #import <AppKit/AppKit.h>
 
 @interface BTGisterPost : NSObject
-@property (nonatomic, retain) NSString *selectedText;
+@property (nonatomic, strong) NSString *selectedText;
 @end
