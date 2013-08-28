@@ -7,33 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8217975517CE003A004453DC /* GisterPostWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8217975317CE003A004453DC /* GisterPostWindow.xib */; };
-		8217975617CE003A004453DC /* LoginWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8217975417CE003A004453DC /* LoginWindow.xib */; };
-		8217975B17CE004E004453DC /* UserCredential.m in Sources */ = {isa = PBXBuildFile; fileRef = 8217975817CE004E004453DC /* UserCredential.m */; };
-		8217975C17CE004E004453DC /* Gist.m in Sources */ = {isa = PBXBuildFile; fileRef = 8217975A17CE004E004453DC /* Gist.m */; };
-		8217976217CE008D004453DC /* NSAlert+EasyAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 8217976117CE008D004453DC /* NSAlert+EasyAlert.m */; };
-		8217976517CE00C1004453DC /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8217976417CE00C1004453DC /* Reachability.m */; };
-		8217976617CE00DD004453DC /* UAGithubEngine in Sources */ = {isa = PBXBuildFile; fileRef = 8266171817CDFE6600CC57F7 /* UAGithubEngine */; };
-		8266171917CDFE6600CC57F7 /* UAGithubEngine in Resources */ = {isa = PBXBuildFile; fileRef = 8266171817CDFE6600CC57F7 /* UAGithubEngine */; };
+		8219B5B317CE18CF0016E1EE /* Gist.m in Sources */ = {isa = PBXBuildFile; fileRef = 8219B5B217CE18CF0016E1EE /* Gist.m */; };
 		826C463817CDF54400475425 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 826C463717CDF54400475425 /* AppKit.framework */; };
 		826C463A17CDF54400475425 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 826C463917CDF54400475425 /* Foundation.framework */; };
 		826C464017CDF54400475425 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 826C463E17CDF54400475425 /* InfoPlist.strings */; };
 		826C464317CDF54400475425 /* BTGisterPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 826C464217CDF54400475425 /* BTGisterPost.m */; };
+		826E930217CE1B3600E51514 /* NetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 826E930117CE1B3600E51514 /* NetworkReachability.m */; };
+		82A9BD8C17CE18350048C15C /* NSAlert+EasyAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A9BD8B17CE18350048C15C /* NSAlert+EasyAlert.m */; };
+		82B8266C17CE1C550012195B /* GisterPostWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B8266A17CE1C550012195B /* GisterPostWindow.xib */; };
+		82B8266D17CE1C550012195B /* LoginWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82B8266B17CE1C550012195B /* LoginWindow.xib */; };
+		82D075D317CE1683002D884D /* GisterPostWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D075D217CE1683002D884D /* GisterPostWindowController.m */; };
+		82DB2FDC17CE1C9200A27BC1 /* LoginWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DB2FDB17CE1C9200A27BC1 /* LoginWindowController.m */; };
+		82E96DAE17CE1A75005A936D /* GitHubUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E96DAD17CE1A75005A936D /* GitHubUserInfo.m */; };
+		F3ADFA89AE144E8E8041C1C7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 618325C7413F46188376DCEB /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8217975317CE003A004453DC /* GisterPostWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GisterPostWindow.xib; sourceTree = "<group>"; };
-		8217975417CE003A004453DC /* LoginWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginWindow.xib; sourceTree = "<group>"; };
-		8217975717CE004E004453DC /* UserCredential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCredential.h; sourceTree = "<group>"; };
-		8217975817CE004E004453DC /* UserCredential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCredential.m; sourceTree = "<group>"; };
-		8217975917CE004E004453DC /* Gist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gist.h; sourceTree = "<group>"; };
-		8217975A17CE004E004453DC /* Gist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gist.m; sourceTree = "<group>"; };
-		8217975E17CE0074004453DC /* LoginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginProtocol.h; sourceTree = "<group>"; };
-		8217976017CE008D004453DC /* NSAlert+EasyAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+EasyAlert.h"; sourceTree = "<group>"; };
-		8217976117CE008D004453DC /* NSAlert+EasyAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+EasyAlert.m"; sourceTree = "<group>"; };
-		8217976317CE00C1004453DC /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		8217976417CE00C1004453DC /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		8266171817CDFE6600CC57F7 /* UAGithubEngine */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UAGithubEngine; sourceTree = "<group>"; };
+		39FBF1B603894D17B2BCC793 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		618325C7413F46188376DCEB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8219B5B117CE18CF0016E1EE /* Gist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gist.h; sourceTree = "<group>"; };
+		8219B5B217CE18CF0016E1EE /* Gist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gist.m; sourceTree = "<group>"; };
 		826C463417CDF54400475425 /* BTGisterPost.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTGisterPost.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		826C463717CDF54400475425 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		826C463917CDF54400475425 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -42,6 +35,19 @@
 		826C464117CDF54400475425 /* BTGisterPost.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTGisterPost.h; sourceTree = "<group>"; };
 		826C464217CDF54400475425 /* BTGisterPost.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTGisterPost.m; sourceTree = "<group>"; };
 		826C464417CDF54400475425 /* BTGisterPost-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BTGisterPost-Prefix.pch"; sourceTree = "<group>"; };
+		826E930017CE1B3600E51514 /* NetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkReachability.h; sourceTree = "<group>"; };
+		826E930117CE1B3600E51514 /* NetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkReachability.m; sourceTree = "<group>"; };
+		82A9BD8A17CE18350048C15C /* NSAlert+EasyAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+EasyAlert.h"; sourceTree = "<group>"; };
+		82A9BD8B17CE18350048C15C /* NSAlert+EasyAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+EasyAlert.m"; sourceTree = "<group>"; };
+		82B8266A17CE1C550012195B /* GisterPostWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GisterPostWindow.xib; sourceTree = "<group>"; };
+		82B8266B17CE1C550012195B /* LoginWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginWindow.xib; sourceTree = "<group>"; };
+		82CE99EC17CE18730098FDBB /* LoginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginProtocol.h; sourceTree = "<group>"; };
+		82D075D117CE1683002D884D /* GisterPostWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GisterPostWindowController.h; sourceTree = "<group>"; };
+		82D075D217CE1683002D884D /* GisterPostWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GisterPostWindowController.m; sourceTree = "<group>"; };
+		82DB2FDA17CE1C9200A27BC1 /* LoginWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginWindowController.h; sourceTree = "<group>"; };
+		82DB2FDB17CE1C9200A27BC1 /* LoginWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWindowController.m; sourceTree = "<group>"; };
+		82E96DAC17CE1A75005A936D /* GitHubUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GitHubUserInfo.h; sourceTree = "<group>"; };
+		82E96DAD17CE1A75005A936D /* GitHubUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GitHubUserInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,62 +57,57 @@
 			files = (
 				826C463817CDF54400475425 /* AppKit.framework in Frameworks */,
 				826C463A17CDF54400475425 /* Foundation.framework in Frameworks */,
+				F3ADFA89AE144E8E8041C1C7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8217975017CDFFEB004453DC /* Controllers */ = {
+		8207D39717CE14B700DB9D2C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				82DB2FDA17CE1C9200A27BC1 /* LoginWindowController.h */,
+				82DB2FDB17CE1C9200A27BC1 /* LoginWindowController.m */,
+				82D075D117CE1683002D884D /* GisterPostWindowController.h */,
+				82D075D217CE1683002D884D /* GisterPostWindowController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		8217975117CDFFFD004453DC /* Models */ = {
+		8207D39817CE14CF00DB9D2C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8217975717CE004E004453DC /* UserCredential.h */,
-				8217975817CE004E004453DC /* UserCredential.m */,
-				8217975917CE004E004453DC /* Gist.h */,
-				8217975A17CE004E004453DC /* Gist.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		8217975217CE0024004453DC /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				8217975317CE003A004453DC /* GisterPostWindow.xib */,
-				8217975417CE003A004453DC /* LoginWindow.xib */,
+				82B8266A17CE1C550012195B /* GisterPostWindow.xib */,
+				82B8266B17CE1C550012195B /* LoginWindow.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		8217975D17CE0056004453DC /* Protocols */ = {
+		8207D39917CE14DB00DB9D2C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8217975E17CE0074004453DC /* LoginProtocol.h */,
+				82E96DAC17CE1A75005A936D /* GitHubUserInfo.h */,
+				82E96DAD17CE1A75005A936D /* GitHubUserInfo.m */,
+				8219B5B117CE18CF0016E1EE /* Gist.h */,
+				8219B5B217CE18CF0016E1EE /* Gist.m */,
 			);
-			path = Protocols;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		8217975F17CE007C004453DC /* Categories */ = {
+		8207D39A17CE14EB00DB9D2C /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				8217976017CE008D004453DC /* NSAlert+EasyAlert.h */,
-				8217976117CE008D004453DC /* NSAlert+EasyAlert.m */,
+				82CE99EC17CE18730098FDBB /* LoginProtocol.h */,
 			);
-			path = Categories;
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		8266171717CDFE0F00CC57F7 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				8217976317CE00C1004453DC /* Reachability.h */,
-				8217976417CE00C1004453DC /* Reachability.m */,
-				8266171817CDFE6600CC57F7 /* UAGithubEngine */,
+				826E930017CE1B3600E51514 /* NetworkReachability.h */,
+				826E930117CE1B3600E51514 /* NetworkReachability.m */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -114,15 +115,16 @@
 		826C462B17CDF54400475425 = {
 			isa = PBXGroup;
 			children = (
-				8217975F17CE007C004453DC /* Categories */,
-				8217975D17CE0056004453DC /* Protocols */,
-				8217975217CE0024004453DC /* Views */,
-				8217975117CDFFFD004453DC /* Models */,
-				8217975017CDFFEB004453DC /* Controllers */,
+				82A9BD8917CE181A0048C15C /* Categories */,
+				8207D39A17CE14EB00DB9D2C /* Protocols */,
+				8207D39917CE14DB00DB9D2C /* Models */,
+				8207D39817CE14CF00DB9D2C /* Views */,
+				8207D39717CE14B700DB9D2C /* Controllers */,
 				8266171717CDFE0F00CC57F7 /* lib */,
 				826C463B17CDF54400475425 /* BTGisterPost */,
 				826C463617CDF54400475425 /* Frameworks */,
 				826C463517CDF54400475425 /* Products */,
+				39FBF1B603894D17B2BCC793 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +141,7 @@
 			children = (
 				826C463717CDF54400475425 /* AppKit.framework */,
 				826C463917CDF54400475425 /* Foundation.framework */,
+				618325C7413F46188376DCEB /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -163,6 +166,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		82A9BD8917CE181A0048C15C /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				82A9BD8A17CE18350048C15C /* NSAlert+EasyAlert.h */,
+				82A9BD8B17CE18350048C15C /* NSAlert+EasyAlert.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -170,9 +182,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 826C464717CDF54400475425 /* Build configuration list for PBXNativeTarget "BTGisterPost" */;
 			buildPhases = (
+				7925A4178AB244478F1226C4 /* Check Pods Manifest.lock */,
 				826C463017CDF54400475425 /* Sources */,
 				826C463117CDF54400475425 /* Frameworks */,
 				826C463217CDF54400475425 /* Resources */,
+				8FD8D33EB98B4A19B4C70630 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,25 +229,58 @@
 			buildActionMask = 2147483647;
 			files = (
 				826C464017CDF54400475425 /* InfoPlist.strings in Resources */,
-				8217975617CE003A004453DC /* LoginWindow.xib in Resources */,
-				8217975517CE003A004453DC /* GisterPostWindow.xib in Resources */,
-				8266171917CDFE6600CC57F7 /* UAGithubEngine in Resources */,
+				82B8266D17CE1C550012195B /* LoginWindow.xib in Resources */,
+				82B8266C17CE1C550012195B /* GisterPostWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7925A4178AB244478F1226C4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8FD8D33EB98B4A19B4C70630 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		826C463017CDF54400475425 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8217976617CE00DD004453DC /* UAGithubEngine in Sources */,
-				8217976217CE008D004453DC /* NSAlert+EasyAlert.m in Sources */,
 				826C464317CDF54400475425 /* BTGisterPost.m in Sources */,
-				8217975C17CE004E004453DC /* Gist.m in Sources */,
-				8217975B17CE004E004453DC /* UserCredential.m in Sources */,
-				8217976517CE00C1004453DC /* Reachability.m in Sources */,
+				826E930217CE1B3600E51514 /* NetworkReachability.m in Sources */,
+				82E96DAE17CE1A75005A936D /* GitHubUserInfo.m in Sources */,
+				82D075D317CE1683002D884D /* GisterPostWindowController.m in Sources */,
+				82DB2FDC17CE1C9200A27BC1 /* LoginWindowController.m in Sources */,
+				8219B5B317CE18CF0016E1EE /* Gist.m in Sources */,
+				82A9BD8C17CE18350048C15C /* NSAlert+EasyAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +370,7 @@
 		};
 		826C464817CDF54400475425 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39FBF1B603894D17B2BCC793 /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_LOCATION = YES;
@@ -332,6 +380,7 @@
 				GCC_PREFIX_HEADER = "BTGisterPost/BTGisterPost-Prefix.pch";
 				INFOPLIST_FILE = "BTGisterPost/BTGisterPost-Info.plist";
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				LIBRARY_SEARCH_PATHS = Libraries/XcodeFrameworks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xcplugin;
 			};
@@ -339,6 +388,7 @@
 		};
 		826C464917CDF54400475425 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39FBF1B603894D17B2BCC793 /* Pods.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_LOCATION = YES;
@@ -348,6 +398,7 @@
 				GCC_PREFIX_HEADER = "BTGisterPost/BTGisterPost-Prefix.pch";
 				INFOPLIST_FILE = "BTGisterPost/BTGisterPost-Info.plist";
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				LIBRARY_SEARCH_PATHS = Libraries/XcodeFrameworks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xcplugin;
 			};

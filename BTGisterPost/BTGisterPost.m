@@ -7,10 +7,16 @@
 //
 
 #import "BTGisterPost.h"
+#import "GitHubUserInfo.h"
+#include "GisterPostWindowController.h"
+
 
 @interface BTGisterPost()
 
 @property (nonatomic, strong) NSBundle *bundle;
+@property (nonatomic, strong) GitHubUserInfo *userCredential;
+@property (nonatomic, strong) GisterPostWindowController *gistPostController;
+@property (nonatomic, strong) NSString *selectedText;
 
 @end
 
@@ -29,6 +35,7 @@
 - (id)init
 {
     if (self = [super init]) {
+        NSLog(@"INIT");
         [self addMenuItems];
     }
     return self;
@@ -36,30 +43,35 @@
 
 - (id)initWithBundle:(NSBundle *)plugin {
     if (self = [super init]) {
+        NSLog(@"INIT WITH PLUGINª");
         _bundle = plugin;
+        self.gistPostController = [[GisterPostWindowController alloc]init];
         [self addMenuItems];
+        [self registrerForSelectionChanges];
     }
     return self;
 }
 
 - (void)addMenuItems {
-    // Create menu items, initialize UI, etc.
-    
-    // Sample Menu Item:
-    NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"File"];
-    if (menuItem) {
-        [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
+    NSMenuItem* editMenuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
+    if (editMenuItem) {
+        [[editMenuItem submenu] addItem:[NSMenuItem separatorItem]];
         
-        //Will use 'a' as a shortcut key
-        NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Do Action" action:@selector(doMenuAction) keyEquivalent:@"a"];
-        [actionMenuItem setTarget:self];
-        
-        // use Alternate Key in combination with 'a' as shortcut: alt+a
-        [actionMenuItem setKeyEquivalentModifierMask: NSAlternateKeyMask];
-        //Add the menuitem
-        [[menuItem submenu] addItem:actionMenuItem];
+        NSMenuItem* newMenuItem = [[NSMenuItem alloc] initWithTitle:@"Post Gist to GitHub"
+                                                             action:@selector(postGistToGitHub)
+                                                      keyEquivalent:@"c"];
+        [newMenuItem setTarget:self];
+        [newMenuItem setKeyEquivalentModifierMask: NSAlternateKeyMask];
+        [[editMenuItem submenu] addItem:newMenuItem];;
     }
 
+}
+
+- (void)registrerForSelectionChanges{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(selectionDidChange:)
+                                                 name:NSTextViewDidChangeSelectionNotification
+                                               object:nil];
 }
 
 // Sample Action, for menu item:
@@ -69,9 +81,35 @@
     [alert runModal];
 }
 
+- (void) selectionDidChange: (NSNotification*) notification {
+    
+    if ([[notification object] isKindOfClass:[NSTextView class]]) {
+        NSTextView* textView = (NSTextView *)[notification object];
+        
+        NSArray* selectedRanges = [textView selectedRanges];
+        
+        NSRange selectedRange = [[selectedRanges objectAtIndex:0] rangeValue];
+        NSString* text = textView.textStorage.string;
+        self.selectedText = [text substringWithRange:selectedRange];
+        
+        if (!self.selectedText || [self.selectedText isEqualToString:@""]){
+            self.selectedText = textView.textStorage.string;
+        }
+        
+        
+    }
+}
+
+
+- (void) postGistToGitHub{
+    [self.gistPostController showGistDialogWindowWithGistText:self.selectedText];
+}
+
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 
 @end

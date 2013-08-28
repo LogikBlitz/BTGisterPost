@@ -1,5 +1,5 @@
 //
-//  LoginProtocol.h
+//  GisterPostWindowController.h
 //  BTGisterPost
 //
 //  Copyright (c) 2013 Thomas Blitz
@@ -23,16 +23,38 @@
 // THE SOFTWARE.
 //
 
-
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 #import "GitHubUserInfo.h"
+#import "LoginProtocol.h"
 
-@protocol LoginProtocol <NSObject>
+@interface GisterPostWindowController : NSWindowController <NSUserNotificationCenterDelegate, LoginProtocol, NSTextViewDelegate>
 
-@required
+@property (nonatomic, weak) id<LoginProtocol> delegate;
 
-- (void)userCancelledLogin;
+@property (nonatomic, copy) NSString *gistText;
 
-- (void)credentialCreated:(GitHubUserInfo *)credential;
+@property (nonatomic, strong) GitHubUserInfo *userCredential;
 
+@property (weak) IBOutlet NSView *commitView;
+
+@property (weak) IBOutlet NSWindow *mainWindow;
+
+@property (weak) IBOutlet NSButton *privateGistCheckBox;
+
+@property (weak) IBOutlet NSTextField *gistDescriptionTextField;
+
+@property (weak) IBOutlet NSTextField *fileNameTextField;
+
+
+- (IBAction)CommitGistButtonPushed:(id)sender;
+
+- (IBAction)CancelCommitButtonPushed:(id)sender;
+
+- (IBAction)fileNameTextFieldEnterPushed:(id)sender;
+
+- (IBAction)descriptionTextFieldEnterPushed:(id)sender;
+
+- (void)showGistDialogWindowWithGistText:(NSString *)gistText;
+
+- (id)init;
 @end

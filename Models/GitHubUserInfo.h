@@ -1,5 +1,5 @@
 //
-//  LoginProtocol.h
+//  GitHubUserInfo.h
 //  BTGisterPost
 //
 //  Copyright (c) 2013 Thomas Blitz
@@ -23,16 +23,11 @@
 // THE SOFTWARE.
 //
 
-
 #import <Foundation/Foundation.h>
-#import "GitHubUserInfo.h"
 
-@protocol LoginProtocol <NSObject>
+@interface GitHubUserInfo : NSObject
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *password;
 
-@required
-
-- (void)userCancelledLogin;
-
-- (void)credentialCreated:(GitHubUserInfo *)credential;
-
+- (id)initWithUsername:(NSString *)username andPassword:(NSString *)password;
 @end
