@@ -378,6 +378,11 @@
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BTGisterPost/BTGisterPost-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/UAGithubEngine\"",
+					Libraries/XcodeFrameworks,
+				);
 				INFOPLIST_FILE = "BTGisterPost/BTGisterPost-Info.plist";
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				LIBRARY_SEARCH_PATHS = Libraries/XcodeFrameworks;
@@ -396,6 +401,11 @@
 				GCC_ENABLE_OBJC_GC = unsupported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BTGisterPost/BTGisterPost-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers\"",
+					"\"${PODS_ROOT}/Headers/UAGithubEngine\"",
+					Libraries/XcodeFrameworks,
+				);
 				INFOPLIST_FILE = "BTGisterPost/BTGisterPost-Info.plist";
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				LIBRARY_SEARCH_PATHS = Libraries/XcodeFrameworks;

@@ -29,8 +29,9 @@
 #import "Gist.h"
 #import "NetworkReachability.h"
 #import "NSAlert+EasyAlert.h"
-//#import <IDEKit/IDEWorkspaceWindowController.h>
-//#import <IDEKit/IDEEditorArea.h>
+#import <IDEKit/IDEWorkspaceWindowController.h>
+#import <IDEKit/IDEEditorArea.h>
+#import <IDEKit/IDEEditorDocument.h>
 //Libraries/XcodeFrameworks#import <IDEKit/IDEEditorDocument.h>
 
 
@@ -70,10 +71,11 @@ static Class IDEWorkspaceWindowControllerClass;
         self.notificationCenter = [NSUserNotificationCenter defaultUserNotificationCenter];
         self.notificationCenter.delegate = self;
         self.loginWindowController = [[LoginWindowController alloc] initWithDelegate:self];
-//        DVTSourceTextViewClass = objc_getClass("DVTSourceTextView");
-//        IDESourceCodeEditorClass = objc_getClass("IDESourceCodeEditor");
-//        IDEApplicationClass = objc_getClass("IDEApplication");
-//        IDEWorkspaceWindowControllerClass = objc_getClass("IDEWorkspaceWindowController");
+        
+        DVTSourceTextViewClass = objc_getClass("DVTSourceTextView");
+        IDESourceCodeEditorClass = objc_getClass("IDESourceCodeEditor");
+        IDEApplicationClass = objc_getClass("IDEApplication");
+        IDEWorkspaceWindowControllerClass = objc_getClass("IDEWorkspaceWindowController");
         
         self.githubEngine = [[UAGithubEngine alloc]initWithUsername:self.userCredential.username password:self.userCredential.password withReachability:YES];
         
@@ -95,23 +97,21 @@ static Class IDEWorkspaceWindowControllerClass;
 #pragma mark - Helper
 - (NSURL *)activeDocument
 {
-//    for (id workspaceWindowController in [IDEWorkspaceWindowControllerClass workspaceWindowControllers])
-//    {
-//        if ([workspaceWindowController workspaceWindow] == self.ideWorkspaceWindow)
-//        {
-//            return [[[workspaceWindowController editorArea] primaryEditorDocument] fileURL];
-//        }
-//    }
+    for (id workspaceWindowController in [IDEWorkspaceWindowControllerClass workspaceWindowControllers])
+    {
+        if ([workspaceWindowController workspaceWindow] == self.ideWorkspaceWindow)
+        {
+            return [[[workspaceWindowController editorArea] primaryEditorDocument] fileURL];
+        }
+    }
 
     return nil;
 }
 
 - (NSString *)currentDocumentName{
-    //NSURL *activeDocumentURL = [self activeDocument];
-    //NSString *activeDocumentFilename = [activeDocumentURL lastPathComponent];
-    
-    //return activeDocumentFilename;
-    return @"DummyFileName";
+    NSURL *activeDocumentURL = [self activeDocument];
+    NSString *activeDocumentFilename = [activeDocumentURL lastPathComponent];
+    return activeDocumentFilename;
 }
 
 - (void)defineFirstReponderTextField{
@@ -203,7 +203,6 @@ static Class IDEWorkspaceWindowControllerClass;
 }
 
 - (void)commitGist{
-    NSLog(@"COMMIT GIST PUSGHED");
     if (!self.userCredential){
         [self requestUserCredentials];
         
