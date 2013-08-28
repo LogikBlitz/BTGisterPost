@@ -9,28 +9,22 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>me.logikblitz.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.underscore.mac.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
-	<string>BNDL</string>
+	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>XC4Compatible</key>
-	<true/>
-	<key>XCGCReady</key>
-	<true/>
-	<key>XCPluginHasUI</key>
-	<false/>
-	<key>DVTPlugInCompatibilityUUIDs</key>
-	<array>
-		<string>63FC1C47-140D-42B0-BB4D-A10B2D225574</string>
-	</array>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2012 Owain R Hunt. All rights reserved.</string>
+	<key>NSPrincipalClass</key>
+	<string></string>
 </dict>
 </plist>
