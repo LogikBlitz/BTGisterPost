@@ -1,5 +1,5 @@
 ## For XCode 5*
-The plugin works in XCode 5 - Just checkout the branch: xcode5-dev6
+Please checkout https://github.com/LogikBlitz/BTGisterPost_Xcode5 for XCode 5 support.
 
 ## BTGisterPost for XCode 4.\*  
 A small plug-in for Xcode 4.\* that allows for posting of Gist's directly from Xcode.
