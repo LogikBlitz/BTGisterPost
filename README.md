@@ -1,6 +1,5 @@
-## For XCode 5. dev6 support
-The plugin works in XCode 5 dev. 6. Just checkout the branch: xcode5-dev6
-This branch is experimental!
+## For XCode 5*
+The plugin works in XCode 5 - Just checkout the branch: xcode5-dev6
 
 ## BTGisterPost for XCode 4.\*  
 A small plug-in for Xcode 4.\* that allows for posting of Gist's directly from Xcode.
